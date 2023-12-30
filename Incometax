@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract IncomeTaxContract {
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    // Function to calculate income tax based on income
+function calculateTaxupto12lakh(uint256 income) public view returns (uint256) {
+    assert(income > 100000); // minimum amount to calculate tax is 1 Lakh
+    require(msg.sender == owner, "Only owner can calculate  tax");
+    uint256 tax;
+
+    if (income <= 600000) {
+        tax = (income * 5) / 100; // 5% tax for income up to 6 lakh
+    } else if (income <= 900000) {
+        tax = (60000 + (income - 600000) * 10) / 100; // 10% tax for income between 6 lakh and 9 lakh
+    } else if (income <= 1200000) {
+        tax = (120000 + (income - 900000) * 15) / 100; // 15% tax for income between 9 lakh and 12 lakh
+    } else {
+        revert("Income exceeds the specified range");
+    }
+
+    // Additional assert statements
+    assert(income >= tax); // Assert that income is greater than or equal to tax
+
+    return tax;
+}}
