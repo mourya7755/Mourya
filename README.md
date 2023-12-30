@@ -1,4 +1,4 @@
-# Income Tax Contract
+# calculate income tax
 
 This Solidity smart contract, named **IncomeTaxContract**, is designed to calculate income tax based on the income provided. It has been developed on the Ethereum blockchain using the Solidity programming language. Below is a brief explanation of the key features and usage of the contract.
 
